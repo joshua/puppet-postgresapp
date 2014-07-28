@@ -2,9 +2,11 @@ require 'spec_helper'
 
 describe 'Postgresapp' do
   it do
-    should contain_package('Postgresapp').with({
+    version = '9.3.5.0'
+    should contain_package('Postgres').with({
+      :ensure   => 'installed',
       :provider => 'compressed_app',
-      :source   => 'http://postgres-app.s3.amazonaws.com/PostgresApp-9-2-2-0.zip',
+      :source   => "https://github.com/PostgresApp/PostgresApp/releases/download/#{version}/Postgres-#{version}.zip",
     })
   end
 end
